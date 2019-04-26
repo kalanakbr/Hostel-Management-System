@@ -1,0 +1,10 @@
+npm init
+
+npm i express mongoose passport passport-jwt js
+onwebtoken body-parser bcryptjs validator
+
+npm i -D nodemon
+
+npm run server : localhost:5000
+
+ npm i multer multer-gridfs-storage gridfs-stream method-override
