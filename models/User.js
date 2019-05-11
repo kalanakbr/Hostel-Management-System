@@ -3,25 +3,41 @@ const Schema = mongoose.Schema;
 
 //Create Schema
 const UserSchema = new Schema ({
+    name: {
+        type: String,
+        required: true
+    },
     regNo: {
         type: String,
         required: true
     },
-    name: {
+    faculty: {
         type: String,
-        required: true
+        required:true
+    },
+    
+    contactNo:{
+        type:Number,
+        required:true
+    },
+    guardianName: {
+        type: String,
+        required:true
+    },
+    guardianTel:{
+        type:String,
+        required:true
     },
     password: {
         type: String,
         required: true
     },
-    picture: {
-        type: String,
-        required: true
+    profilePicture: {
+        type: String
     },
     date: {
         type: Date,
-        required: Date.now
+        default: Date.now
     }
 });
 
