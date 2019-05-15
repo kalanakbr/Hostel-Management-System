@@ -130,7 +130,7 @@ router.get('/handle/:handle', (req, res) => {
             res.json(profile);
         })
             .catch(err => res.status(404).json(err)
-            );
+        );
 });
 
 //@route    GET api/profile/user/:user_id
@@ -201,4 +201,40 @@ router.post('/leave', passport.authenticate('jwt', {session: false }), (req, res
             profile.save().then(profile => res.json(profile));
         })
 });
+
+//@route    DELETE api/profile/leave/:leave_id
+//@desc     delete leaving letter to Profile
+//@access   Private
+router.delete('/leave/:leave_id',passport.authenticate('jwt',{ session: false}),
+(req,res) => {
+    Profile.findOne({ user:req.user.id })
+        .then(profile => {
+            //Get remove index
+            const removeIndex = profile.leave
+                .map(item => item.id)
+                .indexOf(req.params.leave_id);
+
+                //Splice out of array
+                profile.leave.splice(removeIndex, 1);
+
+                //Save
+                profile.save()
+                    .then(profile => res.json(profile));
+            })
+            .catch(err => res.status(404).json(err));
+    }
+);
+
+//@route    DELETE api/profile/
+//@desc     Delete user and Profile
+//@access   Private
+router.delete('/',passport.authenticate('jwt',{ session: false}),
+(req,res) => {
+    Profile.findOneAndRemove({ user:req.user.id})
+        .then(() =>{
+            User.findOneAndRemove({ _id:req.user.id})
+                .then(() => res.json({ success:true }));
+        })
+    }
+);
 module.exports = router; 
