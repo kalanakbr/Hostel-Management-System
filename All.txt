@@ -8,3 +8,8 @@ npm i -D nodemon
 npm run server : localhost:5000
 
  npm i multer multer-gridfs-storage gridfs-stream method-override
+
+npm run dev //run both server and client
+
+npm i react-router-dom //client folder
+
