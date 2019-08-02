@@ -45,15 +45,15 @@ module.exports = function validateRegisterInput(data){
     }
 
     if(Validator.isEmpty(data.guardianName)){
-        errors.guardianName ='Gurdian Name field is required';
+        errors.guardianName ='Guardian Name field is required';
     }
  
     if(Validator.isEmpty(data.guardianTel)){
-        errors.guardianTel ='Gurdian telephone field is required';
+        errors.guardianTel ='Guardian telephone field is required';
     }
 
     if(!Validator.isLength(data.guardianTel, { min: 1 , max: 50 })){
-        errors.guardianTel = 'Gurdian Telephone must be between 1 and 50 Characters';
+        errors.guardianTel = 'Guardian Telephone must be between 1 and 50 Characters';
     }
 
     if(Validator.isEmpty(data.password)){

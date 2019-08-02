@@ -5,6 +5,8 @@ const users = require('./routes/api/users');
 const profile = require('./routes/api/profile');
 const notices = require('./routes/api/notices');
 const passport = require('passport');
+const fileUpload = require('express-fileupload');
+
 
 const app = express();
 
@@ -30,6 +32,9 @@ app.get('/',(req, res) => res.send('Hello!'));
 //Passport middleware
 app.use(passport.initialize());
 
+//file-upload middleware
+app.use(fileUpload());
+
 //Passport config
 require('./config/passport')(passport);
 //Use routes
@@ -37,6 +42,7 @@ app.use('/api/users', users);
 app.use('/api/profile', profile);
 app.use('/api/notices', notices);
 
+// app.use('/upload', express.static('uploads'));
 const port = process.env.PORT || 5000;
 
 app.listen(port, () => console.log(`Server running on port ${port}`));

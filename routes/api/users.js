@@ -6,40 +6,45 @@ const multer = require('multer');
 const jwt = require('jsonwebtoken');
 const keys =require('../../config/keys');
 const passport = require('passport');
+const fileUpload = require('express-fileupload');
+const path = require('path');
 
 //Load Input Validation
 const validateRegisterInput = require('../../validation/register');
 const validateLoginInput = require('../../validation/login');
+const validateUploadInput = require('../../validation/upload');
 
+// router.use(fileUpload());
 
-const storage = multer.diskStorage({
-    destination: function(req, file, cb){
-        cb(null, './uploads');
-    },
-    filename:function (req, file, cb){
-        cb(null, file.originalname);
-    } 
-});
+// const storage = multer.diskStorage({
+//     destination: function(req, file, cb){
+//         cb(null, './uploads');
+//     },
+//     filename:function (req, file, cb){
+//         cb(null, file.originalname);
+//     } 
+// });
 
-const fileFilter = (req, file, cb) => {
-    //reject a file
-    if(file.mimetype === 'image/jpeg' || file.mimetype === 'image/png'){
-    cb(null, true);
-    }else{ 
-    cb(null, false);
-    }
-};
+// const fileFilter = (req, file, cb) => {
+//     //reject a file
+//     if(file.mimetype === 'image/jpeg' || file.mimetype === 'image/png'){
+//     cb(null, true);
+//     }else{ 
+//     cb(null, false);
+//     }
+// };
  
-const upload = multer({ 
-    storage: storage,
-    limits : {
-        fileSize: 1024 * 1024 * 8   
-    },
-    fileFilter: fileFilter
-}); 
+// const upload = multer({ 
+//     storage: storage,
+//     limits : {
+//         fileSize: 1024 * 1024 * 8   
+//     },
+//     fileFilter: fileFilter
+// }); 
 
 //Load User model
 const User  = require('../../models/User');
+
 
 
 //@route    GET api/users/test
@@ -52,9 +57,12 @@ router.get('/test' ,(req,res) => res.json({ //res.send= res.json
 //@route    POST api/users/register
 //@desc     Register user
 //@access   Public
-router.post('/register',upload.single('profilePicture'), (req,res) => {
+
+// , upload.single('profilePicture') 
+router.post('/register',(req,res) => {
     const { errors, isValid } = validateRegisterInput(req.body);
 
+    
     //Check Validation
     if(!isValid){
         return res.status(400).json(errors);
@@ -67,6 +75,20 @@ router.post('/register',upload.single('profilePicture'), (req,res) => {
             errors.regNo =' Register Number already exists'
             return res.status(400).json({ errors});
         } else{
+            // if(req.files === null){
+            //     return res.status(400).json({ errors });
+            // }else {
+            //     const profilePicture = req.files.file;
+               
+            //     profilePicture.mv(`${__dirname}/client/public/uploads/${file.name}`,err => {
+            //         if(err) {
+            //             console.error(err);
+            //             return res.status(500).send(err);
+            //         }
+        
+            //         res.json({ fileName: file.name, filePath:`/uploads/${file.name}`});
+            //     });        
+            // }
             const newUser = new User ({
                 name: req.body.name,
                 regNo: req.body.regNo,
@@ -76,7 +98,7 @@ router.post('/register',upload.single('profilePicture'), (req,res) => {
                 guardianName:req.body.guardianName,
                 guardianTel:req.body.guardianTel,
                 password: req.body.password,
-                profilePicture: req.file.path
+                // profilePicture : req.file.path
             });
 
             bcrypt.genSalt(10, (err, salt) => {
@@ -90,6 +112,27 @@ router.post('/register',upload.single('profilePicture'), (req,res) => {
             })
         }
     })
+});
+
+//Upload end point
+router.post('/upload', (req,res) => { 
+    if(req.files === null){
+        return res.status(400).json({ msg: 'No file uploaded' });
+    }
+
+        const file = req.files.file;
+
+        // const newFile = new User({
+        //     profilePicture: req.files.file
+        // }); 
+        // ${__dirname}
+        file.mv(`client/public/uploads/${file.name}`,err => {
+            if(err) {
+                console.error(err);
+                return res.status(500).send(err);
+            }
+            res.json({ fileName: file.name, filePath:`/uploads/${file.name}`});
+        });
 });
 
 //@route    POST api/users/login
@@ -165,4 +208,5 @@ router.get('/current', passport.authenticate('jwt',{ session: false}),(req, res)
         profilePicture:req.user.profilePicture
      });
 });
+
 module.exports = router;
