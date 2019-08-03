@@ -44,7 +44,7 @@ function App() {
       <Router >
         <div className="App">
           <Navbar />
-            <Route exact path="/" component = { Landing } />
+            <Route exact path={["/","/Hostel-Management-System"]} component = { Landing } />
               {/* half container */}
               <div className="container"> 
                 <Route exact path="/register" component={ Register }/>
