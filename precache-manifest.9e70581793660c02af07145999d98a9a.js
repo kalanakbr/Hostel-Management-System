@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "5df230e922b09f7c196dd9dd1f868dec",
+    "revision": "f415d8d59c3f2db54eee08eb7348b9c9",
     "url": "/Hostel-Management-System/index.html"
   },
   {
-    "revision": "04de8bd9410c641efa1d",
+    "revision": "68f3b583ea8c63380b23",
     "url": "/Hostel-Management-System/static/css/main.2582ba8f.chunk.css"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/Hostel-Management-System/static/js/2.8ec9c194.chunk.js"
   },
   {
-    "revision": "04de8bd9410c641efa1d",
-    "url": "/Hostel-Management-System/static/js/main.937e800d.chunk.js"
+    "revision": "68f3b583ea8c63380b23",
+    "url": "/Hostel-Management-System/static/js/main.001aed90.chunk.js"
   },
   {
     "revision": "ad9e78d9427b10f805c3",

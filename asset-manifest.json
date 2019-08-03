@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/Hostel-Management-System/static/css/main.2582ba8f.chunk.css",
-    "main.js": "/Hostel-Management-System/static/js/main.937e800d.chunk.js",
-    "main.js.map": "/Hostel-Management-System/static/js/main.937e800d.chunk.js.map",
+    "main.js": "/Hostel-Management-System/static/js/main.001aed90.chunk.js",
+    "main.js.map": "/Hostel-Management-System/static/js/main.001aed90.chunk.js.map",
     "runtime~main.js": "/Hostel-Management-System/static/js/runtime~main.8497fb85.js",
     "runtime~main.js.map": "/Hostel-Management-System/static/js/runtime~main.8497fb85.js.map",
     "static/js/2.8ec9c194.chunk.js": "/Hostel-Management-System/static/js/2.8ec9c194.chunk.js",
     "static/js/2.8ec9c194.chunk.js.map": "/Hostel-Management-System/static/js/2.8ec9c194.chunk.js.map",
     "index.html": "/Hostel-Management-System/index.html",
-    "precache-manifest.9fe83cda98cc8f6eddc9d42832502ee2.js": "/Hostel-Management-System/precache-manifest.9fe83cda98cc8f6eddc9d42832502ee2.js",
+    "precache-manifest.9e70581793660c02af07145999d98a9a.js": "/Hostel-Management-System/precache-manifest.9e70581793660c02af07145999d98a9a.js",
     "service-worker.js": "/Hostel-Management-System/service-worker.js",
     "static/css/main.2582ba8f.chunk.css.map": "/Hostel-Management-System/static/css/main.2582ba8f.chunk.css.map",
     "static/media/App.css": "/Hostel-Management-System/static/media/fos.0e165801.jpg"
