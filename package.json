@@ -19,7 +19,7 @@
   "bugs": {
     "url": "https://github.com/kalanakbr/Hostel-Management-System/issues"
   },
-  "homepage": "https://github.com/kalanakbr/Hostel-Management-System#readme",
+  "homepage": "https://github.com/kalanakbr/Hostel-Management-System",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
