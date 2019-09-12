@@ -3,11 +3,11 @@
 > By Kalana Rathnayake
 
 ##  Technologies
-*MongoDB
-*Node.js
-*Express
-*React
-*Redux
+*  MongoDB
+*  Node.js
+*  Express
+*  React
+*  Redux
 
 ##  Run the Repositary
 
