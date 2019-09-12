@@ -2,14 +2,14 @@
 
 > By Kalana Rathnayake
 
-##Technologies
+##  Technologies
 *MongoDB
 *Node.js
 *Express
 *React
-\*Redux
+*Redux
 
-##Run the Repositary
+##  Run the Repositary
 
 > Use `git clone https://github.com/kalanakbr/Hostel-Management-System.git` to clone the repositary or you can download this.
 
